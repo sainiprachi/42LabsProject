@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">42LabsProject</string>
+    <string name="finish">Finished</string>
 </resources>

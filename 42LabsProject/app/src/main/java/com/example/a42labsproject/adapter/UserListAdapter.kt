@@ -12,6 +12,7 @@ import com.example.a42labsproject.R
 import com.example.a42labsproject.model.UserListModel
 import java.util.*
 
+@Suppress("NAME_SHADOWING")
 class UserListAdapter(var userListModelArrayList: ArrayList<UserListModel>) : RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.addon_view, parent, false)
@@ -23,6 +24,10 @@ class UserListAdapter(var userListModelArrayList: ArrayList<UserListModel>) : Re
         holder.txtName.text = userListModel.userName
         holder.txtEmail.text = "Email :" + userListModel.email
         val cdt: CountDownTimer
+
+        /*
+        * count down timer to remove the view
+        * */
         cdt = object : CountDownTimer(userListModel.endTime.toLong(), 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 var millisUntilFinished = millisUntilFinished
@@ -41,7 +46,7 @@ class UserListAdapter(var userListModelArrayList: ArrayList<UserListModel>) : Re
             }
 
             override fun onFinish() {
-                holder.txtTimeRemaining.text = "Finished"
+                holder.txtTimeRemaining.text = "Finish"
                 val handle = Handler()
                 handle.postDelayed({
                     val newPosition = holder.adapterPosition

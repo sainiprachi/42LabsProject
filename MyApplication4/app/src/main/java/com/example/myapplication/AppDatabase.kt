@@ -1,29 +1,16 @@
 package com.example.myapplication
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.Room
-import android.arch.persistence.room.RoomDatabase
 import android.content.Context
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
 
-import com.irontec.roomexample.database.daos.BillDao
-import com.irontec.roomexample.database.daos.CustomerDao
-import com.irontec.roomexample.database.daos.ProviderDao
-import com.irontec.roomexample.database.entities.Bill
-import com.irontec.roomexample.database.entities.Customer
-import com.irontec.roomexample.database.entities.Provider
 
-/**
- * Created by axier on 7/2/18.
- */
-
-@Database(entities = [(Customer::class), (Provider::class), (Bill::class)], version = 5, exportSchema = false)
+@Database(entities = [(AddInfoModel::class)], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun customerDao(): CustomerDao
+    abstract fun addInfoDao(): AddInfoDao
 
-    abstract fun providerDao(): ProviderDao
-
-    abstract fun billDao(): BillDao
 
     companion object {
 
